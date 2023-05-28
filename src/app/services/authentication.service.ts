@@ -9,7 +9,7 @@ import { Jwtres } from '../models/jwtres';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  apiUri = '/api';
+  apiUri = '/api/usuarios';
   authSubject = new BehaviorSubject(false);
   private token: string | null = '';
 
