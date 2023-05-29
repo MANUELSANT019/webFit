@@ -6,12 +6,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class AnimalService {
-  apiUri = '/api/animals';
+export class EjercicioService {
+  apiUri = '/api/ejercicios';
 
   constructor(private http: HttpClient) { }
 
-  getAllAnimalsData(token: any): Observable<any> {
+  getAllEjerciciosData(token: any): Observable<any> {
 
     return this.http.get(this.apiUri, {
       headers:
@@ -22,7 +22,7 @@ export class AnimalService {
     });
   }
 
-  newAnimal(token: any, data: any): Observable<any> {
+  newEjercicio(token: any, data: any): Observable<any> {
     return this.http.post<any>(
       this.apiUri,
       data,
@@ -34,7 +34,7 @@ export class AnimalService {
       });
   }
 
-  updateAnimal(token: any, id: any, data: any): Observable<any> {
+  updateEjercicio(token: any, id: any, data: any): Observable<any> {
     console.log(data)
     return this.http.put<any>(
       this.apiUri + '/' + id,
@@ -45,7 +45,7 @@ export class AnimalService {
       } });
   }
 
-  getOneAnimal(token: any, id: any): Observable<any> {
+  getOneEjercicio(token: any, id: any): Observable<any> {
     return this.http.get<any>(
       this.apiUri + '/' + id,
       { headers: {
@@ -54,7 +54,7 @@ export class AnimalService {
       } });
   }
 
-  deleteAnimal(token: any, id: any) {
+  deleteEjercicio(token: any, id: any) {
     return this.http.delete<any>(
       this.apiUri + "/" + id,
       { headers: {

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AnimalComponent } from './components/animal/animal.component';
+import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -13,10 +13,11 @@ import { SignupComponent } from './authentication/signup/signup.component';
 import { AuthenticationService } from './services/authentication.service';
 import { MenuComponent } from './components/menu/menu.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    AnimalComponent,
+    EjercicioComponent,
     LoginComponent,
     SignupComponent,
     MenuComponent,

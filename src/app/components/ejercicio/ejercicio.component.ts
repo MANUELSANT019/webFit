@@ -1,31 +1,33 @@
 import { FormBuilder } from '@angular/forms';
-import { AnimalService } from './../../services/animal.service';
+import { EjercicioService } from '../../services/ejercicio.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { formatDate } from '@angular/common';
+import { Injectable } from '@angular/core';
 
 @Component({
-  selector: 'app-animal',
-  templateUrl: './animal.component.html',
-  styleUrls: ['./animal.component.css']
+  selector: 'app-ejercicio',
+  templateUrl: './ejercicio.component.html',
+  styleUrls: ['./ejercicio.component.css']
 })
-export class AnimalComponent {
-  titlePage: string = 'Animalitos';
-  animalList: any = [];
-  animalForm: any = this.formBuilder.group({
-    nombre: '',
-    edad: 0,
-    tipo: '',
+export class EjercicioComponent {
+  titlePage: string = 'Ejercicios';
+  ejercicioList: any = [];
+  ejercicioForm: any = this.formBuilder.group({
+    nombreEjercicio: '',
+    peso: 0,
+    series: 0,
+    repeticiones: 0,
     fecha: Date
   })
-  editableAnimal: boolean = false;
-  idAnimal: any;
+  editableEjercicio: boolean = false;
+  idEjercicio: any;
   user = 'Usuario';
 
 
-  constructor(private animalService: AnimalService,
+  constructor(private EjercicioService: EjercicioService,
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService) {
@@ -33,23 +35,23 @@ export class AnimalComponent {
 
   }
   ngOnInit() {
-    this.getAllAnimals();
+    this.getAllEjercicio();
   }
 
 
-  getAllAnimals() {
-    this.animalService.getAllAnimalsData(localStorage.getItem('accessToken')).subscribe(
+  getAllEjercicio() {
+    this.EjercicioService.getAllEjerciciosData(localStorage.getItem('accessToken')).subscribe(
       (data: {}) => {
-        this.animalList = data
+        this.ejercicioList = data
       }
     );
   }
 
-  newAnimalEntry() {
-    this.animalService.newAnimal(localStorage.getItem('accessToken'), this.animalForm.value).subscribe(
+  newEjercicioEntry() {
+    this.EjercicioService.newEjercicio(localStorage.getItem('accessToken'), this.ejercicioForm.value).subscribe(
       () => {
-        //Redirigiendo a la ruta actual /animal y recargando la ventana
-        this.router.navigate(['/animal']).then(() => {
+        //Redirigiendo a la ruta actual /ejercicio y recargando la ventana
+        this.router.navigate(['/ejercicio']).then(() => {
           this.newMessage('Registro exitoso');
         })
       }
@@ -64,35 +66,35 @@ export class AnimalComponent {
       .subscribe(() => window.location.reload());
   }
 
-  updateAnimalEntry() {
+  updateEjercicioEntry() {
     //Removiendo valores vacios del formulario de actualización
-    for (let key in this.animalForm.value) {
-      if (this.animalForm.value[key] === '') {
-        this.animalForm.removeControl(key);
+    for (let key in this.ejercicioForm.value) {
+      if (this.ejercicioForm.value[key] === '') {
+        this.ejercicioForm.removeControl(key);
       }
     }
-    this.animalService.updateAnimal(localStorage.getItem('accessToken'), this.idAnimal, this.animalForm.value).subscribe(
+    this.EjercicioService.updateEjercicio(localStorage.getItem('accessToken'), this.idEjercicio, this.ejercicioForm.value).subscribe(
       () => {
         //Enviando mensaje de confirmación
-        this.newMessage("Animal editado");
+        this.newMessage("Ejercicio editado");
       }
     );
   }
 
-  toggleEditAnimal(id: any) {
-    this.idAnimal = id;
-    console.log(this.idAnimal)
-    this.animalService.getOneAnimal(localStorage.getItem('accessToken'), id).subscribe(
+  toggleEditEjercicio(id: any) {
+    this.idEjercicio = id;
+    console.log(this.idEjercicio)
+    this.EjercicioService.getOneEjercicio(localStorage.getItem('accessToken'), id).subscribe(
       data => {
-        this.animalForm.setValue({
-          nombre: data.nombre,
-          edad: data.edad,
-          tipo: data.tipo,
+        this.ejercicioForm.setValue({
+          nombreEjercicio: data.nombreEjercicio,
+          peso: data.peso,
+          series: data.series,
           fecha: this.getValidDate(data.fecha)
         });
       }
     );
-    this.editableAnimal = !this.editableAnimal;
+    this.editableEjercicio = !this.editableEjercicio;
   }
 
   getValidDate(fecha: Date) {
@@ -129,12 +131,12 @@ export class AnimalComponent {
     return finalDate;
   }
 
-  deleteAnimalEntry(id: any) {
+  deleteEjercicioEntry(id: any) {
     console.log(id)
-    this.animalService.deleteAnimal(localStorage.getItem('accessToken'), id).subscribe(
+    this.EjercicioService.deleteEjercicio(localStorage.getItem('accessToken'), id).subscribe(
       () => {
         //Enviando mensaje de confirmación
-        this.newMessage("Animal eliminado");
+        this.newMessage("Ejercicio eliminado");
       }
     );
   }
