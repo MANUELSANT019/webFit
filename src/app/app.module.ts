@@ -12,6 +12,8 @@ import { LoginComponent } from './authentication/login/login.component';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { AuthenticationService } from './services/authentication.service';
 import { MenuComponent } from './components/menu/menu.component';
+import { GuiaComponent } from './components/guia/guia/guia.component';
+
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { MenuComponent } from './components/menu/menu.component';
     LoginComponent,
     SignupComponent,
     MenuComponent,
+    GuiaComponent,
   ],
   imports: [
     BrowserModule,
