@@ -6,7 +6,7 @@
   <app-menu> </app-menu>
 
 
-  <div  id="content-wrapper" class="d-flex flex-column">
+  <div id="content-wrapper" class="d-flex flex-column">
 
     <!-- Main Content -->
     <div id="content">
@@ -27,10 +27,10 @@
           <div class="topbar-divider d-none d-sm-block"></div>
 
           <!-- Nav Item - User Information -->
-          <li  class="nav-item dropdown no-arrow">
+          <li class="nav-item dropdown no-arrow">
 
             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user}}</span>
-            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+            <!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
 
           </li>
 
@@ -69,7 +69,8 @@
               <div class="col-md-10">
                 <div class="">
                   <!-- Button trigger modal -->
-                  <button style="background-color: #76DA93; border: color #76DA93 ; border: 0 ; color: #001e2b;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <button style="background-color: #76DA93; border: color #76DA93 ; border: 0 ; color: #001e2b;"
+                    type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Registrar Marca
                   </button>
                 </div>
@@ -94,17 +95,22 @@
                         <td>{{item.Series}}</td>
                         <td>{{item.repeticiones}}</td>
                         <td>{{item.fecha}}</td>
-                        <td><button style="background-color: #001e2b; border: color #76DA93 ; border: 0 ; color:  #76DA93;" class="btn btn-primary" (click)="toggleEditEjercicio(item._id)">
+                        <td><button
+                            style="background-color: #001e2b; border: color #76DA93 ; border: 0 ; color:  #76DA93;"
+                            class="btn btn-primary" (click)="toggleEditEjercicio(item._id)">
                             <i class="bi bi-pencil-square"></i>
                           </button></td>
-                        <td><button style="background-color: #76DA93; border: color #76DA93 ; border: 0 ; color: #001e2b;" class="btn btn-primary" (click)="deleteEjercicioEntry(item._id)">
+                        <td><button
+                            style="background-color: #76DA93; border: color #76DA93 ; border: 0 ; color: #001e2b;"
+                            class="btn btn-primary" (click)="deleteEjercicioEntry(item._id)">
                             <i class="bi bi-trash"></i>
                           </button></td>
                       </tr>
                   </table>
                 </div>
                 <!--TERMINA TABLA-->
-                <form *ngIf="editableEjercicio" class="card p-2" (ngSubmit)="updateEjercicioEntry()" [formGroup]="ejercicioForm">
+                <form *ngIf="editableEjercicio" class="card p-2" (ngSubmit)="updateEjercicioEntry()"
+                  [formGroup]="ejercicioForm">
                   <div class="mb-3">
                     <label for="nombreEjercicio" class="form-label">nombreEjercicio</label>
                     <input type="text" class="form-control" id="nombreEjercicio" aria-describedby="emailHelp"
@@ -112,13 +118,11 @@
                   </div>
                   <div class="mb-3">
                     <label for="peso" class="form-label">Peso</label>
-                    <input type="number" class="form-control" id="peso" placeholder="peso"
-                      formControlName="peso">
+                    <input type="number" class="form-control" id="peso" placeholder="peso" formControlName="peso">
                   </div>
                   <div class="mb-3">
                     <label for="series" class="form-label">Series</label>
-                    <input type="number" class="form-control" id="series" placeholder="Series"
-                      formControlName="series">
+                    <input type="number" class="form-control" id="series" placeholder="Series" formControlName="series">
                   </div>
                   <div class="mb-3">
                     <label for="series" class="form-label">repeticiones</label>
@@ -155,8 +159,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="peso" class="form-label">Peso</label>
-                      <input type="number" class="form-control" id="peso" placeholder="peso"
-                        formControlName="peso">
+                      <input type="number" class="form-control" id="peso" placeholder="peso" formControlName="peso">
                     </div>
                     <div class="mb-3">
                       <label for="series" class="form-label">Series</label>

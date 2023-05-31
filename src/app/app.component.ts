@@ -1,5 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
+import { ReactiveFormsModule } from "@angular/forms";
+
 
 @Component({
   selector: 'app-root',

@@ -1,61 +1,59 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon rotate-n-15">
+      <i class="fas fa-dumbbell"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">FitFusion</div>
+  </a>
 
-  <!-- Sidebar -->
-  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
 
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-hippo"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3">FitFusion</div>
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" href="/ejercicio">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Inicio</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimal" aria-expanded="true"
+      aria-controls="collapseAnimal">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Guias</span>
     </a>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-      <a class="nav-link" href="/ejercicio">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Inicio</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimal" aria-expanded="true"
-        aria-controls="collapseAnimal">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>Guias</span>
-      </a>
-      <div id="collapseAnimal" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="/guia">Listado de ejercicios</a>
-        </div>
+    <div id="collapseAnimal" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="/guia">Listado de ejercicios</a>
       </div>
-    </li>
+    </div>
+  </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+  <!-- Nav Item - Pages Collapse Menu -->
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <i class="fas fa-fw fa-sign-out-alt"></i>
-        <span>Salir</span></a>
-    </li>
+  <!-- Divider -->
+  <hr class="sidebar-divider">
 
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+
+  <!-- Nav Item - Charts -->
+  <li class="nav-item">
+    <a class="nav-link" style="cursor: pointer;">
+      <i class="fas fa-fw fa-sign-out-alt"></i>
+      <span routerLink="/login">Salir</span></a>
+  </li>
 
 
-  </ul>
-  <!-- End of Sidebar -->
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">
+
+
+</ul>
+<!-- End of Sidebar -->

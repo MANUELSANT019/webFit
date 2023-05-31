@@ -1,6 +1,4 @@
-
 <div class="container">
-
   <!-- Outer Row -->
   <div class="row justify-content-center">
 
@@ -10,7 +8,7 @@
         <div class="card-body p-0">
           <!-- Nested Row within Card Body -->
           <div class="row">
-            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+            <div class="col-lg-6 d-none d-lg-block fondo-login"></div>
             <div class="col-lg-6">
               <div class="p-5">
                 <div class="text-center">
@@ -19,23 +17,22 @@
                 <form class="user" (ngSubmit)="onRegister(formLogin)" #formLogin="ngForm">
                   <div class="form-group">
                     <input type="text" class="form-control form-control-user" id="exampleInputUser"
-                      aria-describedby="emailHelp" placeholder="Usuario"  name="usuario" ngModel>
+                      aria-describedby="emailHelp" placeholder="Usuario" name="usuario" ngModel>
                   </div>
                   <div class="form-group">
                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                      aria-describedby="emailHelp" placeholder="Correo"  name="correo" ngModel>
+                      aria-describedby="emailHelp" placeholder="Correo" name="correo" ngModel>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-user" id="exampleInputPassword"
                       placeholder="Clave" name="clave" ngModel autocomplete="on">
                   </div>
 
-                  <button type="submit" class="btn btn-primary btn-user btn-block">
-                    Iniciar sesión
+                  <button type="submit" class="btn boton-azul-oscuro btn-user btn-block">
+                    Registrar
                   </button>
                 </form>
                 <hr>
-
               </div>
             </div>
           </div>

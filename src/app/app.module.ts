@@ -12,9 +12,6 @@ import { LoginComponent } from './authentication/login/login.component';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { AuthenticationService } from './services/authentication.service';
 import { MenuComponent } from './components/menu/menu.component';
-import { GuiaComponent } from './components/guia/guia/guia.component';
-
-
 
 @NgModule({
   declarations: [
@@ -23,7 +20,6 @@ import { GuiaComponent } from './components/guia/guia/guia.component';
     LoginComponent,
     SignupComponent,
     MenuComponent,
-    GuiaComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +33,7 @@ import { GuiaComponent } from './components/guia/guia/guia.component';
       positionClass: 'toast-bottom-right',
     }),
   ],
-  providers: [
-    AuthenticationService
-  ],
-  bootstrap: [AppComponent]
+  providers: [AuthenticationService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
