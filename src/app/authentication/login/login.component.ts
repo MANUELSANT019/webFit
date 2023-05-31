@@ -7,26 +7,26 @@ import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-
-  constructor(@Inject(DOCUMENT) private document: Document,
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
     private authenticationService: AuthenticationService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.document.body.classList.add('bg-gradient-primary');
   }
 
   onLogin(form: any): void {
-    console.log("hello");
-    
-    this.authenticationService.login(form.value).subscribe(
-      (res) => {
-        localStorage.setItem('accessToken',JSON.parse(JSON.stringify(res)).accessToken);
-        this.router.navigateByUrl('/ejercicio');
-      }
-    );
+    this.authenticationService.login(form.value).subscribe((res) => {
+      localStorage.setItem(
+        'accessToken',
+        JSON.parse(JSON.stringify(res)).accessToken
+      );
+      this.router.navigateByUrl('/ejercicio');
+    });
   }
 }

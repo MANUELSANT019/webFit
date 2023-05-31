@@ -1,0 +1,9 @@
+.fondo-login{
+    background-image: url(../../../assets/images/ApiFit.jpeg);
+    background-size: cover;
+}
+
+.boton-azul-oscuro{
+    background-color: #001E2B;
+    color: white;
+}

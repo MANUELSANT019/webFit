@@ -6,23 +6,26 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
-  constructor(@Inject(DOCUMENT) private document: Document,
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
     private authenticationService: AuthenticationService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.document.body.classList.add('bg-gradient-primary');
   }
 
   onRegister(form: any): void {
-    this.authenticationService.register(form.value).subscribe(
-      (res) => {
-        localStorage.setItem('accessToken', JSON.parse(JSON.stringify(res)).accessToken);
-        this.router.navigateByUrl('/login');
-      }
-    );
+    this.authenticationService.register(form.value).subscribe((res) => {
+      localStorage.setItem(
+        'accessToken',
+        JSON.parse(JSON.stringify(res)).accessToken
+      );
+      this.router.navigateByUrl('/login');
+    });
   }
 }
