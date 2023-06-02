@@ -1,0 +1,15 @@
+.titulos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .titulos h2 {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .titulos img {
+    width: 180px; /* Ajusta el tamaño de las imágenes según tus necesidades */
+    height: 150px;
+  }
