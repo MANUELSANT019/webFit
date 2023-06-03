@@ -79,10 +79,10 @@
                   <table class="table table-striped table-sm">
                     <thead>
                       <tr>
-                        <th scope="col">nombreEjercicio</th>
+                        <th scope="col">Nombre del Ejercicio</th>
                         <th scope="col">Peso</th>
                         <th scope="col">Series</th>
-                        <th scope="col">repeticiones</th>
+                        <th scope="col">Repeticiones</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Editar</th>
                         <th scope="col">Eliminar</th>
@@ -91,8 +91,8 @@
                     <tbody>
                       <tr *ngFor="let item of ejercicioList">
                         <td>{{item.nombreEjercicio}}</td>
-                        <td>{{item.Peso}}</td>
-                        <td>{{item.Series}}</td>
+                        <td>{{item.peso}}</td>
+                        <td>{{item.series}}</td>
                         <td>{{item.repeticiones}}</td>
                         <td>{{item.fecha}}</td>
                         <td><button

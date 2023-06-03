@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Component({
   selector: 'app-ejercicio',
   templateUrl: './ejercicio.component.html',
-  styleUrls: ['./ejercicio.component.css']
+  styleUrls: ['./ejercicio.component.css'],
 })
 export class EjercicioComponent {
   titlePage: string = 'Ejercicios';
@@ -20,49 +20,46 @@ export class EjercicioComponent {
     peso: 0,
     series: 0,
     repeticiones: 0,
-    fecha: Date
-  })
+    fecha: Date,
+  });
   editableEjercicio: boolean = false;
   idEjercicio: any;
   user = 'Usuario';
 
-
-  constructor(private EjercicioService: EjercicioService,
+  constructor(
+    private EjercicioService: EjercicioService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private toastr: ToastrService) {
-
-
-  }
+    private toastr: ToastrService
+  ) {}
   ngOnInit() {
     this.getAllEjercicio();
   }
 
-
   getAllEjercicio() {
-    this.EjercicioService.getAllEjerciciosData(localStorage.getItem('accessToken')).subscribe(
-      (data: {}) => {
-        this.ejercicioList = data
-      }
-    );
+    this.EjercicioService.getAllEjerciciosData(
+      localStorage.getItem('accessToken')
+    ).subscribe((data: {}) => {
+      this.ejercicioList = data;
+    });
   }
 
   newEjercicioEntry() {
-    this.EjercicioService.newEjercicio(localStorage.getItem('accessToken'), this.ejercicioForm.value).subscribe(
-      () => {
-        //Redirigiendo a la ruta actual /ejercicio y recargando la ventana
-        this.router.navigate(['/ejercicio']).then(() => {
-          this.newMessage('Registro exitoso');
-        })
-      }
-    );
+    this.EjercicioService.newEjercicio(
+      localStorage.getItem('accessToken'),
+      this.ejercicioForm.value
+    ).subscribe(() => {
+      //Redirigiendo a la ruta actual /ejercicio y recargando la ventana
+      this.router.navigate(['/ejercicio']).then(() => {
+        this.newMessage('Registro exitoso');
+      });
+    });
   }
 
-
   newMessage(messageText: string) {
-    this.toastr.success('Clic aquí para actualizar la lista', messageText)
-      .onTap
-      .pipe(take(1))
+    this.toastr
+      .success('Clic aquí para actualizar la lista', messageText)
+      .onTap.pipe(take(1))
       .subscribe(() => window.location.reload());
   }
 
@@ -73,34 +70,37 @@ export class EjercicioComponent {
         this.ejercicioForm.removeControl(key);
       }
     }
-    this.EjercicioService.updateEjercicio(localStorage.getItem('accessToken'), this.idEjercicio, this.ejercicioForm.value).subscribe(
-      () => {
-        //Enviando mensaje de confirmación
-        this.newMessage("Ejercicio editado");
-      }
-    );
+    this.EjercicioService.updateEjercicio(
+      localStorage.getItem('accessToken'),
+      this.idEjercicio,
+      this.ejercicioForm.value
+    ).subscribe(() => {
+      //Enviando mensaje de confirmación
+      this.newMessage('Ejercicio editado');
+    });
   }
 
   toggleEditEjercicio(id: any) {
     this.idEjercicio = id;
-    console.log(this.idEjercicio)
-    this.EjercicioService.getOneEjercicio(localStorage.getItem('accessToken'), id).subscribe(
-      data => {
-        this.ejercicioForm.setValue({
-          nombreEjercicio: data.nombreEjercicio,
-          peso: data.peso,
-          series: data.series,
-          fecha: this.getValidDate(data.fecha)
-        });
-      }
-    );
+    console.log(this.idEjercicio);
+    this.EjercicioService.getOneEjercicio(
+      localStorage.getItem('accessToken'),
+      id
+    ).subscribe((data) => {
+      this.ejercicioForm.setValue({
+        nombreEjercicio: data.nombreEjercicio,
+        peso: data.peso,
+        series: data.series,
+        fecha: this.getValidDate(data.fecha),
+      });
+    });
     this.editableEjercicio = !this.editableEjercicio;
   }
 
   getValidDate(fecha: Date) {
     const fechaFinal: Date = new Date(fecha);
     //separado los datos
-    var dd = fechaFinal.getDate() + 1;//fue necesario porque siempre daba un día antes
+    var dd = fechaFinal.getDate() + 1; //fue necesario porque siempre daba un día antes
     var mm = fechaFinal.getMonth() + 1; //porque Enero es 0
     var yyyy = fechaFinal.getFullYear();
     var mes = '';
@@ -127,17 +127,22 @@ export class EjercicioComponent {
     }
     //formatDate para colocar la fecha en un formato aceptado por el calendario
     //GMT-0500 es para Colombia
-    var finalDate = formatDate(new Date(yyyy + '-' + mes + '-' + dia + ' GMT-0500'), 'yyyy-MM-dd', "en-US");
+    var finalDate = formatDate(
+      new Date(yyyy + '-' + mes + '-' + dia + ' GMT-0500'),
+      'yyyy-MM-dd',
+      'en-US'
+    );
     return finalDate;
   }
 
   deleteEjercicioEntry(id: any) {
-    console.log(id)
-    this.EjercicioService.deleteEjercicio(localStorage.getItem('accessToken'), id).subscribe(
-      () => {
-        //Enviando mensaje de confirmación
-        this.newMessage("Ejercicio eliminado");
-      }
-    );
+    console.log(id);
+    this.EjercicioService.deleteEjercicio(
+      localStorage.getItem('accessToken'),
+      id
+    ).subscribe(() => {
+      //Enviando mensaje de confirmación
+      this.newMessage('Ejercicio eliminado');
+    });
   }
 }
